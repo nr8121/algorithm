@@ -7,5 +7,6 @@ int main()
 
     scanf("%[^\n]",str);
     printf("%s\n",str);
+    //check
     
 }
