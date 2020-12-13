@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <memory.h>
 
+
 int _strlen(char* a)
 {
     int i = 0;

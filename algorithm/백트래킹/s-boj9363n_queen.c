@@ -118,25 +118,11 @@ int nqueen(int n, int row)
         
     for(int column = 0 ; column < n ; column++)
     {
-        
-        //printf("check . %d %d\n", column, row);
-
         if(check(column,row) == 0)
         {
-            //printf("here\n");
             put(column, row, n);
-
-            //printf("before -------------------------\n");
-            //printf_arr(n);
-            //printf("before -------------------------\n");
-
             nqueen(n, row+1);
-
             take(column, row, n);
-
-            // printf("after -------------------------\n");
-            // printf_arr(n);
-            // printf("after -------------------------\n");
         }
         else
         {
