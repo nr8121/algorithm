@@ -24,7 +24,8 @@ CAPCAK
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-char dp[1001][1001] = {0,};
+//int;;;
+int dp[1001][1001] = {0,};
 /*
 int len(char* str){
     int ret = 0;
@@ -55,8 +56,18 @@ int main(int argc, char* argv[]){
 
     memset(first, 0, sizeof(char)*1001);
     memset(second, 0, sizeof(char)*1001);
+
     scanf("%s", first);
     scanf("%s", second);
+/*
+    char alpha[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    for(int i = 0 ; i < 1000; i++){
+        first[i] = alpha[rand()%26];
+        second[i] = alpha[rand()%26];
+    }
+    printf("%s\n", first);
+    printf("%s\n", second);
+*/
     lcs(first, second);
     free(first);
     free(second);

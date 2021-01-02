@@ -30,9 +30,14 @@
 #include <stdio.h>
 int weight[101];
 int value[101];
+int dp[101][100001];
 
-int valueSum(int n){
+int valueSum(int n, int k){
+    for(int i = 0 ; i < n ; i++){
+        for(int j = 0 ; j < k ; j++){
 
+        }
+    }
 }
 int main(int argc, char* argv[]){
     int n,k;
@@ -42,6 +47,6 @@ int main(int argc, char* argv[]){
         scanf("%d %d", &weight[i], &value[i]);
     }
 
-    valueSum(n);
+    valueSum(n, k);
     return 0;
 }
