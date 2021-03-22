@@ -32,6 +32,8 @@ bridge_length	weight	truck_weights	return
 100	100	[10]	101
 100	100	[10,10,10,10,10,10,10,10,10,10]	110
 */
+
+//어려운것 같다.뭔가 난이도 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -43,30 +45,61 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
 
     vector<int> remain(truck_weights.size(), bridge_length);
 
-    int begin = 0;
-    int follow = 0;
-  
-    while(follow < truck_weights.size())
+    int in = 0;
+    int out = 0;
+    
+    while(out < truck_weights.size())
     {
-        if(weight - truck_weights[begin] >= 0 && begin < truck_weights.size())
+        if(weight - truck_weights[in] >= 0 && in < truck_weights.size())
         {
-            
-            weight -= truck_weights[begin];
+            weight -= truck_weights[in];
             answer+=1;
-            for(int i = follow; i <= begin; i++) remain[i] -= 1;
-            begin++;
+            for(int i = out ; i <= in; i++) remain[i] -= 1;
+            in++;
         }
         else
         {
-            if(begin >= truck_weights.size()) answer+=1;
-            weight += truck_weights[follow];
-            answer+=remain[follow];
-            for(int i = follow+1; i < begin ; i++) remain[i] -= remain[follow];
-            follow++;
+            weight += truck_weights[out];
+            if(remain[out] > 0)
+            {   
+                answer+=remain[out];
+                for(int i = out+1; i < in ; i++) remain[i] -= remain[out];
+            }
+            out++;
         }
     }
     return answer;
 }
+
+// int solution(int bridge_length, int weight, vector<int> truck_weights) {
+//     int answer = 0;
+
+//     vector<int> remain(truck_weights.size(), bridge_length);
+
+//     int begin = 0;
+//     int follow = 0;
+  
+//     while(follow < truck_weights.size())
+//     {
+//         if(weight - truck_weights[begin] >= 0 && begin < truck_weights.size())
+//         {
+            
+//             weight -= truck_weights[begin];
+//             answer+=1;
+//             for(int i = follow; i <= begin; i++) remain[i] -= 1;
+//             begin++;
+//         }
+//         else
+//         {
+//             if(begin >= truck_weights.size()) answer+=1;
+//             weight += truck_weights[follow];
+//             answer+=remain[follow];
+//             for(int i = follow+1; i < begin ; i++) remain[i] -= remain[follow];
+//             follow++;
+//         }
+//     }
+//     return answer;
+// }
 
 int main()
 {
